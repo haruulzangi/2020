@@ -31,7 +31,8 @@ app.get('/', (req, res) => {
     }
     // make hzSession with cookies
     var hzSession = {
-        'internal': {}
+        'internal': {},
+        'filePath': undefined
     }
     for(let item in req.signedCookies){
 	console.log(item)
