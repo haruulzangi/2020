@@ -1,0 +1,8 @@
+version: '2.0'
+services:
+ covid-declare:
+   build:
+    context: .
+   ports:
+    - "13300:13300"
+   restart: unless-stopped

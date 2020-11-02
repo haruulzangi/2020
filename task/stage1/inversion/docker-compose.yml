@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  inversion:
+    build: .
+    restart: unless-stopped
+    ports:
+      - '13005:5000'

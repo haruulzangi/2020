@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  guess-server:
+    build: .
+    container_name: guess-number
+    ports:
+      - '16013:5000'
+    restart: unless-stopped

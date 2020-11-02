@@ -1,0 +1,14 @@
+version: '3'
+services:
+  pwn:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: hw-group3-pwn
+    container_name: hz-group3-pwn
+    environment:
+      - VULN_PORT=19010
+    user: anonymous
+    ports:
+      - '19010:19010'
+    restart: always

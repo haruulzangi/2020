@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+    websploit2:
+        build: .
+        ports:
+            - 13002:5000
+        restart: unless-stopped

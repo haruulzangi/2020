@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/chat.css">
+</head>
+<body>
+
+<div class="split left">
+  {% if msg %}
+  <!-- /inf0?hint=flag -->
+  <div class="centered">
+      <img src="/static/washington.jpg" alt="Avatar">
+      <h2>Protagonist</h2>
+  </div>
+  <div class="container darker">
+      <img src="/static/washington.jpg" alt="Avatar" class="right" style="width:100%;">
+        <p>{{ msg }}{% if link %}<a href="/inf0">.</a>{% endif %}</p>
+  </div>
+  {% endif %}
+</div>
+
+<div class="split right">
+  <div class="centered">
+      <img src="/static/andrie.png" alt="Avatar">
+      <h2>Rotas</h2>
+  </div>
+
+  <div class="container">
+      <form method="post" action="/">
+          <input type="text" name="msg" id="textfield_input" style="width: 85%" class="textfield">
+          <button type="submit" class="button is-primary" style="width: 10%; height: 100%">Send</button>
+      </form>
+  </div>
+
+</div>
+</body>
+</html>

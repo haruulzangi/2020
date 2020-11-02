@@ -1,0 +1,8 @@
+version: '2.0'
+services:
+ easysql:
+   build:
+    context: .
+   ports:
+    - "13999:80"
+   restart: unless-stopped

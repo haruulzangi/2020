@@ -1,0 +1,14 @@
+version: '3'
+services:
+  pwn:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: stage2-lhagva-pwn1
+    container_name: stage2-lhagva-pwn1
+    environment:
+      - VULN_PORT=16014
+    user: anonymous
+    ports:
+      - '16014:16014'
+    restart: unless-stopped

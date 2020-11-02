@@ -1,0 +1,47 @@
+#!/usr/bin/env python
+from __future__ import print_function
+
+import socket
+import io, sys
+from io import BytesIO as StringIO
+import threading
+
+
+def getSandbox(self,sock):
+    banned = [ 
+        "import","exec","eval","pickle","os","flag","40","subprocess","input","banned","sys"
+    ]
+    UNSAFE = ['open','file','execfile','compile','reload','__import__','eval','input']
+    for func in UNSAFE:
+        del __builtins__.__dict__[func]
+    while 1:
+        old_stdout = sys.stdout
+        new_stdout = StringIO()
+        sys.stdout = new_stdout
+        sock.send(b">>> ")
+        data = sock.recv(1024).strip()
+        for no in banned:
+            if no.lower().encode('utf-8') in data.lower():
+                sock.send(b"[+] Har jagsaaltand orson :)\n")
+                sock.close()
+                break
+           
+        try:
+            exec(data)
+            result = sys.stdout.getvalue().strip()
+            sys.stdout = old_stdout
+            sock.send(str(result).encode('utf-8'))
+            sock.send(b"\n")
+        except Exception as err:
+            sock.send(str(err).encode('utf-8'))
+            sock.send(b"\n")
+
+if __name__ == "__main__":
+    s = socket.socket()
+    s.bind(("0.0.0.0", 5000))
+    s.listen(256)
+    while True:
+        c = s.accept()[0]
+        t = threading(target=getSandbox, args=(c,))
+        t.setDaemon = True
+        t.start()

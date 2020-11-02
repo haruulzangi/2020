@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/chat.css">
+</head>
+<body>
+
+<div class="split left">
+    <div class="centered">
+        <img src="/static/washington.jpg" alt="Avatar woman">
+        <h2>Protagonist</h2>
+    </div>
+
+    <div class="container">
+        <form method="post">
+            <input type="text" id="textfield_input" style="width: 85%" class="textfield">
+            <button type="submit" class="button is-primary" style="width: 10%; height: 100%">Send</button>
+        </form>
+    </div>
+</div>
+
+<div class="split right">
+    {% if msg %}
+    <div class="centered">
+        <img src="/static/andrie.png" alt="Avatar man">
+        <h2>Sator</h2>
+    </div>
+    <div class="container darker">
+        <img src="/static/andrie.png" alt="Avatar" class="right" style="width:100%;">
+        {% if msg == "yes" %}
+            last : hz{<a href="/static/1bb9/hearme.mp3" >Now you hear me.</a>}
+        {% else %}
+            <p>{{ msg }}</p>
+        {% endif %}
+        <span class="time-left">{{ datetime.hour }}:{{ datetime.minute }}</span>
+    </div>
+    {% endif %}
+
+</div>
+</body>
+</html>

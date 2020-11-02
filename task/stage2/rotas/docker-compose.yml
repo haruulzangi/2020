@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  rotas-server:
+    build: .
+    container_name: rotas
+    ports:
+      - '16016:5000'
+    restart: unless-stopped
